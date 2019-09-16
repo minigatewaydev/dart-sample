@@ -4,6 +4,6 @@ This sample is constructed using Visual Studio Code 1.38.1, so the IDE is requir
 
 ### Running sample
 
-After all dependencies is restored, in VSC:
+After all dependencies is restored, in Visual Studio Code:
 - Terminal > New Terminal
 - type <b><code>dart app.dart</code></b> and hit enter
