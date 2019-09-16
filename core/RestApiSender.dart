@@ -14,15 +14,19 @@ class RestApiSender {
     return await httpClient
         .getUrl(Uri.parse(url))
         .then((HttpClientRequest hReq) {
-          return hReq.close();
-        })
-        .then(( HttpClientResponse hResp){
-          return SimpleHttpResponse(
-            hResp.statusCode, hResp.headers.contentType.value, '');
-        });
+      return hReq.close();
+    }).then((HttpClientResponse hResp) {
+      return SimpleHttpResponse(
+          hResp.statusCode, hResp.headers.contentType.value, '');
+    });
   }
 
-  Future<SimpleHttpResponse> sendPostAsync(MtRequest mtReq, String baseUrl) async {
-    
+  Future<SimpleHttpResponse> sendPostAsync(
+      MtRequest mtReq, String baseUrl) async {
+    var r = await httpClient
+        .postUrl(Uri.parse(baseUrl))
+        .then((HttpClientRequest hReq) {
+          
+        });
   }
 }
