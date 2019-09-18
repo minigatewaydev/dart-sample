@@ -4,7 +4,6 @@ This sample is constructed using Visual Studio Code 1.38.1, so the editor is req
 
 ## Running sample in VSC
 
-To run sample:
 - Make sure to change the required information in <code>app.dart</code> file
 - Terminal > New Terminal
 - type <b><code>dart app.dart</code></b> and hit enter
