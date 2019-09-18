@@ -1,32 +1,41 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 import '../models/MtRequest.dart';
 import '../models/SimpleHttpResponse.dart';
 
-class RestApiSender {
-  HttpClient httpClient;
-  HttpRequest httpRequest;
-
-  RestApiSender() {
-    httpClient = HttpClient();
+Future<SimpleHttpResponse> getAsync(String url) async {
+  try {
+    var resp = await http.get(url);
+    return new SimpleHttpResponse(resp.statusCode, resp.body, null);
+  } catch (e) {
+    return new SimpleHttpResponse(99, null, e);
   }
+}
 
-  Future<SimpleHttpResponse> sendGetAsync(String url) async {
-    return await httpClient
-        .getUrl(Uri.parse(url))
-        .then((HttpClientRequest hReq) {
-      return hReq.close();
-    }).then((HttpClientResponse hResp) {
-      return SimpleHttpResponse(
-          hResp.statusCode, hResp.headers.contentType.value, '');
-    });
+Future<SimpleHttpResponse> postAsync(MtRequest mtReq, String baseUrl) async {
+  try {
+    var resp = await http.post(baseUrl, body: mtReq.toJson());
+    return new SimpleHttpResponse(resp.statusCode, resp.body, null);
+  } catch (e) {
+    return new SimpleHttpResponse(99, null, e);
   }
+}
 
-  Future<SimpleHttpResponse> sendPostAsync(
-      MtRequest mtReq, String baseUrl) async {
-    var r = await httpClient
-        .postUrl(Uri.parse(baseUrl))
-        .then((HttpClientRequest hReq) {
-          
-        });
+@deprecated
+Future<String> _readResponseAsync(HttpClientResponse resp) async {
+  try {
+    var completer = new Completer();
+    var contents = new StringBuffer();
+
+    resp.transform(utf8.decoder).listen((data) {
+      contents.write(data);
+    }, onDone: () => completer.complete(contents.toString()));
+
+    var x = await completer.future;
+    return x.toString();
+  } catch (e) {
+    return null;
   }
 }
