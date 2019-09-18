@@ -1,7 +1,10 @@
 import 'Mt.dart';
 
-class MtResponse{
-  String username, chargingPlan, message;
-  int creditDeducted;
-  List<Mt> mtList;
+class MtResponse {
+  final String username, chargingPlan, message;
+  final int creditDeducted;
+  final List<Mt> mtList;
+
+  MtResponse(this.username, this.chargingPlan, this.message,
+      this.creditDeducted, this.mtList);
 }
