@@ -4,7 +4,7 @@ This sample is constructed using Visual Studio Code 1.38.1, so the editor is req
 
 ## Project dependency
 This project uses the following library:
-- Http → https://pub.dev/packages/http#-installing-tab-
+- Http (https://pub.dev/packages/http#-installing-tab-)
 
 ## Running sample in VSC
 - Download as ZIP and extract
