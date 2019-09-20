@@ -11,8 +11,16 @@ Future main(List<String> args) async {
    * for username & password. If you set 'dlrMask' to 1, 
    * please specify the 'dlrUrl'
    */
-  var req = MtRequest("YOUR_USERNAME", "YOUR_PASSWORD", "Dart sample", "60123456789",
-      "Dart sample using HTTP POST & GET", "1", "0", "YOUR_DLR_URL", "json");
+  var req = MtRequest(
+      "YOUR_USERNAME",
+      "YOUR_PASSWORD",
+      "Dart sample",
+      "60123456789",
+      "Dart sample using HTTP POST & GET",
+      "1",
+      "0",
+      "YOUR_DLR_URL",
+      "json");
 
 /* Change 'type' between 1 - 2 to switch result
  * 1 = Send using POST
