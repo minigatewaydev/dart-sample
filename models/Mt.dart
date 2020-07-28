@@ -1,6 +1,6 @@
 class Mt{
-  final String mtId, receiver, status;
-  final int message;
+  final String mtId, receiver, statusDescription;
+  final int statusCode;
 
-  Mt(this.mtId, this.receiver, this.status, this.message);
+  Mt(this.mtId, this.receiver, this.statusCode, this.statusDescription);
 }
